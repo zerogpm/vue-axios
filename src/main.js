@@ -6,7 +6,7 @@ import store from './store'
 import axios from 'axios'
 
 axios.defaults.baseURL = 'https://vuejs-b77a2.firebaseio.com'
-axios.defaults.headers.common['Authorization'] = 'fasdsad!1asd'
+//axios.defaults.headers.common['Authorization'] = 'fasdsad!1asd'
 axios.defaults.headers.get['Accepts'] = 'application/json'
 
 const reqInterceptor = axios.interceptors.request.use(config => {
