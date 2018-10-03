@@ -104,6 +104,9 @@
         }
         this.$store.dispatch('signup', { email: formData.email, password: formData.password })
       }
+    },
+    mounted () {
+      console.log(process.env.VUE_APP_API)
     }
   }
 </script>
