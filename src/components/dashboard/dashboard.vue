@@ -17,7 +17,6 @@
       created () {
         axios.get('/users.json')
           .then(res => {
-            console.log(res)
             const data = res.data
             const users = []
             for (let key in data) {
