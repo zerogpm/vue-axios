@@ -15,7 +15,7 @@ const routes = [
   { path: '/dashboard',
     component: DashboardPage,
     beforeEnter (to, from, next) {
-      if (store.state.idToken) {
+      if (localStorage.getItem('userId')) {
         next()
       } else {
         next('/signin')
