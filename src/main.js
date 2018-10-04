@@ -4,6 +4,9 @@ import './registerServiceWorker'
 import router from './router'
 import store from './store'
 import axios from 'axios'
+import Vuelidate from 'vuelidate'
+
+Vue.use(Vuelidate)
 
 axios.defaults.baseURL = 'https://vuejs-b77a2.firebaseio.com'
 //axios.defaults.headers.common['Authorization'] = 'fasdsad!1asd'
