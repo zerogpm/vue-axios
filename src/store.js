@@ -2,6 +2,7 @@ import Vue from 'vue'
 import Vuex from 'vuex'
 import axios from './axios-auth'
 import gloabalAxios from 'axios'
+import router from './router'
 
 Vue.use(Vuex)
 
@@ -18,6 +19,11 @@ export default new Vuex.Store({
     },
     storeUser (state, user) {
       state.user = user
+    },
+    clearAll (state) {
+      state.idToken = null
+      state.userId = null
+      state.user = null
     }
   },
   actions: {
@@ -49,8 +55,13 @@ export default new Vuex.Store({
             token: res.data.idToken,
             userId: res.data.localId
           })
+          router.replace('/dashboard')
         })
         .catch(error => console.log(error))
+    },
+    logout ({commit}) {
+      commit('clearAll')
+      router.replace('/signin')
     },
     storeUser({commit, state}, userData) {
       if (!state.idToken) {
