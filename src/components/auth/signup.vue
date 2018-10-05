@@ -77,7 +77,7 @@
                     <label for="terms">Accept Terms of Use</label>
                 </div>
                 <div class="submit">
-                    <button type="submit">Submit</button>
+                    <button type="submit" :disabled="$v.$invalid">Submit</button>
                 </div>
             </form>
         </div>
@@ -85,7 +85,7 @@
 </template>
 
 <script>
-  import { required, email, numeric, minValue, minLength, sameAs, requiredUnless } from 'vuelidate/lib/validators'
+  import { required, email, numeric, minValue, minLength, sameAs } from 'vuelidate/lib/validators'
   export default {
     data () {
       return {
