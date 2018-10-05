@@ -67,8 +67,13 @@
                         <p v-if="!$v.hobbyInputs.required">Please add hobbies.</p>
                     </div>
                 </div>
-                <div class="input inline">
-                    <input type="checkbox" id="terms" v-model="terms">
+                <div class="input inline" :class="{invalid: $v.terms.$error}">
+                    <input
+                            type="checkbox"
+                            id="terms"
+                            @change="$v.terms.$touch()"
+                            v-model="terms">
+
                     <label for="terms">Accept Terms of Use</label>
                 </div>
                 <div class="submit">
@@ -80,7 +85,7 @@
 </template>
 
 <script>
-  import { required, email, numeric, minValue, minLength, sameAs } from 'vuelidate/lib/validators'
+  import { required, email, numeric, minValue, minLength, sameAs, requiredUnless } from 'vuelidate/lib/validators'
   export default {
     data () {
       return {
@@ -121,6 +126,11 @@
             required,
             minLen: minLength(5)
           }
+        }
+      },
+      terms: {
+        checked(val) {
+          return this.country === 'germany' ? true : val;
         }
       }
     },
